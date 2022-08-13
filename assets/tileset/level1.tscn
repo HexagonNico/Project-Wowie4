@@ -13,16 +13,17 @@ tile_data = PoolIntArray( 20, 536870915, 0, 21, 2, 0, 22, 2, 0, 23, 2, 0, 24, 2,
 [node name="Robot" parent="." index="1"]
 position = Vector2( 64, 196 )
 
-[node name="Camera" parent="Robot" index="7"]
-process_mode = 0
-limit_right = 896
-limit_bottom = 352
-smoothing_enabled = true
-smoothing_speed = 8.0
-
 [node name="BubbleWrapBall" parent="." index="2"]
 position = Vector2( 104, 188 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="ResetLevel" index="0"]
 position = Vector2( 432, 360 )
 shape = SubResource( 1 )
+
+[node name="Teleporter" parent="." index="4"]
+position = Vector2( 480, 320 )
+
+[node name="Camera" parent="." index="7"]
+position = Vector2( 64, 196 )
+limit_right = 896
+limit_bottom = 352

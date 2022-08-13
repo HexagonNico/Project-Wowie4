@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/robot/robot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/bubble_wrap/bubble_wrap_ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/levels/level.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/teleporter/teleporter.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -66,10 +67,8 @@ __meta__ = {
 
 [node name="Robot" parent="." instance=ExtResource( 2 )]
 
-[node name="Camera" type="Camera2D" parent="Robot"]
-current = true
-limit_left = 0
-limit_top = 0
+[node name="RemoteTransform" type="RemoteTransform2D" parent="Robot"]
+remote_path = NodePath("../../Camera")
 
 [node name="BubbleWrapBall" parent="." instance=ExtResource( 3 )]
 position = Vector2( 24, -8 )
@@ -80,6 +79,8 @@ collision_mask = 5
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Teleporter" parent="." instance=ExtResource( 6 )]
 
 [node name="FadeToBlack" type="CanvasLayer" parent="."]
 layer = 100
@@ -100,4 +101,10 @@ stretch_mode = 1
 anims/RESET = SubResource( 2 )
 anims/ResetLevel = SubResource( 1 )
 
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+
 [connection signal="body_entered" from="ResetLevel" to="." method="_on_reset_level_body_entered"]
+[connection signal="teleported" from="Teleporter" to="." method="go_to_next_level"]
