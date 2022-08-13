@@ -121,13 +121,18 @@ anims/RESET = SubResource( 3 )
 anims/Run = SubResource( 4 )
 
 [node name="EdgeDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2( 10, -16 )
+position = Vector2( -10, -16 )
 enabled = true
-cast_to = Vector2( 0, 20 )
+cast_to = Vector2( 0, 24 )
 collision_mask = 24
 
 [node name="EdgeDetectorRight" type="RayCast2D" parent="."]
-position = Vector2( -10, -16 )
+position = Vector2( 10, -16 )
 enabled = true
-cast_to = Vector2( 0, 20 )
+cast_to = Vector2( 0, 24 )
+collision_mask = 24
+
+[node name="GroundDetector" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 4 )
 collision_mask = 24

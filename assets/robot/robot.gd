@@ -19,8 +19,8 @@ var velocity = Vector2.ZERO
 
 onready var animation_player = $AnimationPlayer
 onready var sprite = $RobotSprite
-onready var edge_detector_left = $EdgeDetectorLeft
-onready var edge_detector_right = $EdgeDetectorRight
+onready var edge_detector = [$EdgeDetectorLeft, $EdgeDetectorRight]
+onready var ground_detector = $GroundDetector
 
 
 func _unhandled_input(event: InputEvent):
@@ -40,12 +40,13 @@ func _process(delta: float):
 			animation_player.play("Run")
 			velocity.y += GRAVITY * delta
 			sprite.scale.x = sign(velocity.x)
-			if not edge_detector_left.is_colliding() or not edge_detector_right.is_colliding():
+			if not edge_detector[1 if velocity.x > 0.0 else 0].is_colliding():
 				velocity.y = -jump_strength
 				current_state = AIR
 		AIR:
 			velocity.y += GRAVITY * delta
 			animation_player.play("Jump" if velocity.y < 0.0 else "Falling")
+			if ground_detector.is_colliding(): current_state = RUN
 
 
 func _physics_process(_delta: float):
