@@ -11,16 +11,16 @@ extents = Vector2( 16, 32 )
 [node name="TestScene" type="Node2D"]
 
 [node name="Robot" parent="." instance=ExtResource( 1 )]
-position = Vector2( 64, 64 )
+position = Vector2( 64, 192 )
 
 [node name="StaticBody" type="StaticBody2D" parent="."]
 collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="StaticBody"]
-position = Vector2( 112, 76 )
+position = Vector2( 112, 204 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape3" type="CollisionShape2D" parent="StaticBody"]
-position = Vector2( 16, 32 )
+position = Vector2( 16, 160 )
 shape = SubResource( 2 )
