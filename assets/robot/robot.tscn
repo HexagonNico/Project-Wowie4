@@ -150,17 +150,29 @@ grow_vertical = 0
 theme = ExtResource( 3 )
 
 [node name="JumpButton" type="CheckBox" parent="PlayerUI/ActionButtons"]
-margin_right = 60.0
+margin_right = 68.0
 margin_bottom = 20.0
+hint_tooltip = "Toggles the robot's ability to jump at edges"
+shortcut_in_tooltip = false
 pressed = true
-text = "Jump"
+text = " Jump "
 
 [node name="KickButton" type="Button" parent="PlayerUI/ActionButtons"]
 margin_top = 24.0
-margin_right = 60.0
+margin_right = 68.0
 margin_bottom = 44.0
+hint_tooltip = "Makes the robot kick the bubble wrap ball"
 shortcut_in_tooltip = false
-text = "Kick"
+text = " Kick "
+
+[node name="BeginButton" type="Button" parent="PlayerUI/ActionButtons"]
+margin_top = 48.0
+margin_right = 68.0
+margin_bottom = 68.0
+hint_tooltip = "Starts the level"
+shortcut_in_tooltip = false
+text = " Begin "
 
 [connection signal="toggled" from="PlayerUI/ActionButtons/JumpButton" to="." method="set_jump"]
 [connection signal="pressed" from="PlayerUI/ActionButtons/KickButton" to="." method="kick"]
+[connection signal="pressed" from="PlayerUI/ActionButtons/BeginButton" to="." method="begin"]

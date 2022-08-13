@@ -23,18 +23,6 @@ onready var edge_detector = [$EdgeDetectorLeft, $EdgeDetectorRight]
 onready var ground_detector = $GroundDetector
 
 
-func _ready():
-	$PlayerUI/ActionButtons.visible = false
-
-
-func _unhandled_input(event: InputEvent):
-	if event is InputEventMouseButton:
-		if current_state == IDLE:
-			current_state = RUN
-			velocity.x = speed
-			$PlayerUI/ActionButtons.visible = true
-
-
 func _process(delta: float):
 	match current_state:
 		IDLE:
@@ -61,6 +49,12 @@ func _physics_process(_delta: float):
 func reset(start_pos: Vector2):
 	global_position = start_pos
 	current_state = IDLE
+
+
+func begin():
+	if current_state == IDLE:
+		current_state = RUN
+		velocity.x = speed
 
 
 func kick():
