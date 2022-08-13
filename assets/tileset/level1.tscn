@@ -16,3 +16,6 @@ limit_right = 896
 limit_bottom = 352
 smoothing_enabled = true
 smoothing_speed = 8.0
+
+[node name="BubbleWrapBall" parent="." index="2"]
+position = Vector2( 104, 188 )
