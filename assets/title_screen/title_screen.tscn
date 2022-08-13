@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/title_screen/sounds/wowie.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/title_screen/main_menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/tileset/level1.tscn" type="PackedScene" id=4]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+
+[node name="MainMenu" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+level_1_scene = ExtResource( 4 )
+
+[node name="MenuButtons" type="VBoxContainer" parent="MainMenu"]
+margin_left = 369.0
+margin_top = 194.0
+margin_right = 431.0
+margin_bottom = 286.0
+
+[node name="PlayButton" type="Button" parent="MainMenu/MenuButtons"]
+margin_right = 62.0
+margin_bottom = 20.0
+text = "Play"
+
+[node name="CreditsButton" type="Button" parent="MainMenu/MenuButtons"]
+margin_top = 24.0
+margin_right = 62.0
+margin_bottom = 44.0
+text = "Credits"
+
+[node name="WowieButton" type="Button" parent="MainMenu/MenuButtons"]
+margin_top = 48.0
+margin_right = 62.0
+margin_bottom = 68.0
+text = "Wowie"
+
+[node name="QuitButton" type="Button" parent="MainMenu/MenuButtons"]
+margin_top = 72.0
+margin_right = 62.0
+margin_bottom = 92.0
+text = "Quit"
+
+[node name="WowieSound" type="AudioStreamPlayer" parent="MainMenu/MenuButtons"]
+stream = ExtResource( 2 )
+
+[connection signal="pressed" from="MainMenu/MenuButtons/PlayButton" to="MainMenu" method="play"]
+[connection signal="pressed" from="MainMenu/MenuButtons/WowieButton" to="MainMenu/MenuButtons/WowieSound" method="play"]
+[connection signal="pressed" from="MainMenu/MenuButtons/QuitButton" to="MainMenu" method="quit"]
