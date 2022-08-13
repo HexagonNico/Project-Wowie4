@@ -7,7 +7,9 @@ enum {
 }
 
 
-export var speed: float = 50.0
+const GRAVITY: float = 900.0
+
+export var speed = 80.0
 
 var current_state = IDLE
 
@@ -24,12 +26,13 @@ func _unhandled_input(event: InputEvent):
 			velocity.x = speed
 
 
-func _process(_delta: float):
+func _process(delta: float):
 	match current_state:
 		IDLE:
 			animation_player.play("Idle")
 		RUN:
 			animation_player.play("Run")
+			velocity.y += GRAVITY * delta
 			sprite.flip_h = velocity.x < 0.0
 
 

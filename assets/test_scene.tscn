@@ -21,10 +21,6 @@ collision_mask = 0
 position = Vector2( 112, 76 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2" type="CollisionShape2D" parent="StaticBody"]
-position = Vector2( 16, 32 )
-shape = SubResource( 2 )
-
 [node name="CollisionShape3" type="CollisionShape2D" parent="StaticBody"]
-position = Vector2( 208, 32 )
+position = Vector2( 16, 32 )
 shape = SubResource( 2 )
