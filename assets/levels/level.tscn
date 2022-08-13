@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/robot/robot.tscn" type="PackedScene" id=2]
@@ -7,6 +7,83 @@
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/teleporter/teleporter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/background/parallax_background.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/ui/theme.tres" type="Theme" id=8]
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeText"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BubbleWrapBall/Label:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -36.0, -36.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BubbleWrapBall/Label:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -16.0, -16.0, 10.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BubbleWrapBall/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Robot/Label:margin_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -60.0, -60.0, -10.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Robot/Label:margin_bottom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -40.0, -40.0, 10.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Robot/Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -21,6 +98,78 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BubbleWrapBall/Label:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -36.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BubbleWrapBall/Label:margin_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -16.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BubbleWrapBall/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Robot/Label:margin_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -60.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Robot/Label:margin_bottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -40.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Robot/Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -68,8 +217,28 @@ __meta__ = {
 
 [node name="Robot" parent="." instance=ExtResource( 2 )]
 
+[node name="Label" type="Label" parent="Robot"]
+margin_left = -7.0
+margin_top = -60.0
+margin_right = 7.0
+margin_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 8 )
+text = "AI"
+
 [node name="BubbleWrapBall" parent="." instance=ExtResource( 3 )]
 position = Vector2( 24, -8 )
+
+[node name="Label" type="Label" parent="BubbleWrapBall"]
+margin_left = -15.0
+margin_top = -36.0
+margin_right = 15.0
+margin_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 8 )
+text = "You"
 
 [node name="ResetLevel" type="Area2D" parent="."]
 collision_layer = 0
@@ -96,6 +265,8 @@ texture = ExtResource( 5 )
 stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeText"
+anims/FadeText = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 anims/ResetLevel = SubResource( 1 )
 
