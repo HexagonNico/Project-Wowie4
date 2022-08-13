@@ -18,6 +18,8 @@ bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
 bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
 
 [sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [resource]
@@ -31,3 +33,4 @@ Button/styles/focus = SubResource( 3 )
 Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 5 )
 Button/styles/pressed = SubResource( 6 )
+Label/fonts/font = SubResource( 1 )
