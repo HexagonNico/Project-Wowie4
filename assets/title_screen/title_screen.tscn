@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/title_screen/sounds/wowie.wav" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/title_screen/scripts/camera.gd" type="Script" id=6]
 [ext_resource path="res://assets/title_screen/textures/title.png" type="Texture" id=7]
 [ext_resource path="res://assets/title_screen/textures/wowie_jam.png" type="Texture" id=8]
+[ext_resource path="res://assets/wall_of_text/wall_of_text.tscn" type="PackedScene" id=9]
 
 [node name="TitleScreen" type="Node"]
 
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 level_1_scene = ExtResource( 4 )
+wall_of_text = ExtResource( 9 )
 
 [node name="MainMenu" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
 margin_left = 124.0
