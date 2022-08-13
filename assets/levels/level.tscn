@@ -68,9 +68,6 @@ __meta__ = {
 
 [node name="Robot" parent="." instance=ExtResource( 2 )]
 
-[node name="RemoteTransform" type="RemoteTransform2D" parent="Robot"]
-remote_path = NodePath("../../Camera")
-
 [node name="BubbleWrapBall" parent="." instance=ExtResource( 3 )]
 position = Vector2( 24, -8 )
 
