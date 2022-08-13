@@ -152,6 +152,7 @@ theme = ExtResource( 3 )
 [node name="JumpButton" type="CheckBox" parent="PlayerUI/ActionButtons"]
 margin_right = 60.0
 margin_bottom = 20.0
+pressed = true
 text = "Jump"
 
 [node name="KickButton" type="Button" parent="PlayerUI/ActionButtons"]
