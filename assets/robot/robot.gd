@@ -38,6 +38,7 @@ func _unhandled_input(event: InputEvent):
 func _process(delta: float):
 	match current_state:
 		IDLE:
+			velocity = Vector2.ZERO
 			animation_player.play("Idle")
 		RUN:
 			animation_player.play("Run")
@@ -55,6 +56,11 @@ func _process(delta: float):
 func _physics_process(_delta: float):
 	velocity.y = move_and_slide(velocity, Vector2.UP).y
 	if is_on_wall(): velocity.x *= -1
+
+
+func reset(start_pos: Vector2):
+	global_position = start_pos
+	current_state = IDLE
 
 
 func kick():

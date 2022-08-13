@@ -1,10 +1,58 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/tileset/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/robot/robot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/bubble_wrap/bubble_wrap_ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/levels/level.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeToBlack/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "ResetLevel"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeToBlack/TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_level"
+} ]
+}
 
 [node name="Level" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -12,6 +60,9 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 16
 collision_mask = 0
 format = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Robot" parent="." instance=ExtResource( 2 )]
 
@@ -22,3 +73,31 @@ limit_top = 0
 
 [node name="BubbleWrapBall" parent="." instance=ExtResource( 3 )]
 position = Vector2( 24, -8 )
+
+[node name="ResetLevel" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FadeToBlack" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="TextureRect" type="TextureRect" parent="FadeToBlack"]
+modulate = Color( 0, 0, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/ResetLevel = SubResource( 1 )
+
+[connection signal="body_entered" from="ResetLevel" to="." method="_on_reset_level_body_entered"]
