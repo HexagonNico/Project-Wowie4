@@ -93,7 +93,7 @@ tracks/0/keys = {
 }
 
 [node name="Robot" type="KinematicBody2D"]
-collision_mask = 24
+collision_mask = 28
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -106,6 +106,12 @@ texture = ExtResource( 1 )
 hframes = 16
 vframes = 2
 frame = 16
+
+[node name="Kick" type="RayCast2D" parent="RobotSprite"]
+position = Vector2( 8, 6 )
+enabled = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Falling = SubResource( 6 )

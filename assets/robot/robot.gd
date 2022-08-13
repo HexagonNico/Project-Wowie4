@@ -28,6 +28,8 @@ func _unhandled_input(event: InputEvent):
 		if current_state == IDLE:
 			current_state = RUN
 			velocity.x = speed
+		elif current_state == RUN and event.is_pressed():
+			kick()
 
 
 func _process(delta: float):
@@ -37,7 +39,7 @@ func _process(delta: float):
 		RUN:
 			animation_player.play("Run")
 			velocity.y += GRAVITY * delta
-			sprite.flip_h = velocity.x < 0.0
+			sprite.scale.x = sign(velocity.x)
 			if not edge_detector_left.is_colliding() or not edge_detector_right.is_colliding():
 				velocity.y = -jump_strength
 				current_state = AIR
@@ -49,3 +51,11 @@ func _process(delta: float):
 func _physics_process(_delta: float):
 	velocity.y = move_and_slide(velocity, Vector2.UP).y
 	if is_on_wall(): velocity.x *= -1
+
+
+func kick():
+	var kick_ray = $RobotSprite/Kick
+	if kick_ray.is_colliding():
+		var collider = kick_ray.get_collider()
+		if collider is RigidBody2D:
+			collider.linear_velocity = Vector2(100.0, -250.0) * sprite.scale
