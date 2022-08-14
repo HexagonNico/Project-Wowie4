@@ -23,4 +23,8 @@ func _on_body_entered(body: Node2D):
 		get_parent().add_child(particles)
 		particles.position = body.position
 		body.queue_free()
-		emit_signal("teleported")
+		$Timer.start()
+
+
+func _on_timer_timeout():
+	emit_signal("teleported")
