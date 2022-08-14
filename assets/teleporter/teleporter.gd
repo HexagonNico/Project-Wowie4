@@ -4,11 +4,13 @@ extends Node2D
 signal teleported
 
 
-var count: int = 0
+var ball_entered: bool = false
 
 
 func _on_body_entered(body: Node2D):
-	count += 1
-	body.queue_free()
-	if count == 2:
+	if not ball_entered and body is RigidBody2D:
+		body.queue_free()
+		ball_entered = true
+	elif ball_entered and body is KinematicBody2D:
+		body.queue_free()
 		emit_signal("teleported")
