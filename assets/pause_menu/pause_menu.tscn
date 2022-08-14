@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/ui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/ui/font/kenney_mini_square.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/pause_menu/pause_menu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.25098 )
+
+[node name="Menu" type="CenterContainer" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MenuOptions" type="VBoxContainer" parent="Background/Menu"]
+margin_left = 252.0
+margin_top = 128.0
+margin_right = 548.0
+margin_bottom = 351.0
+alignment = 1
+
+[node name="Paused" type="Label" parent="Background/Menu/MenuOptions"]
+margin_right = 296.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Paused"
+
+[node name="Spacer" type="MarginContainer" parent="Background/Menu/MenuOptions"]
+margin_top = 59.0
+margin_right = 296.0
+margin_bottom = 91.0
+custom_constants/margin_top = 16
+custom_constants/margin_bottom = 16
+
+[node name="ResumeButton" type="Button" parent="Background/Menu/MenuOptions"]
+margin_left = 58.0
+margin_top = 95.0
+margin_right = 238.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 3 )
+text = "Resume"
+
+[node name="SkipButton" type="Button" parent="Background/Menu/MenuOptions"]
+margin_left = 58.0
+margin_top = 139.0
+margin_right = 238.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 3 )
+text = "Skip level"
+
+[node name="QuitButton" type="Button" parent="Background/Menu/MenuOptions"]
+margin_left = 58.0
+margin_top = 183.0
+margin_right = 238.0
+margin_bottom = 223.0
+rect_min_size = Vector2( 180, 40 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 3 )
+text = "Quit"
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="Background/Menu/MenuOptions/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Background/Menu/MenuOptions/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]
