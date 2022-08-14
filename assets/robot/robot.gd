@@ -30,15 +30,18 @@ func _process(delta: float):
 			animation_player.play("Idle")
 		RUN:
 			animation_player.play("Run")
-			velocity.y += GRAVITY * delta
 			sprite.scale.x = sign(velocity.x)
-			if can_jump and not edge_detector[1 if velocity.x > 0.0 else 0].is_colliding() and ground_detector.is_colliding():
+			if can_jump and not edge_detector[1 if velocity.x > 0.0 else 0].is_colliding():
 				velocity.y = -jump_strength
+				current_state = AIR
+			elif not edge_detector[0].is_colliding() and not edge_detector[1].is_colliding():
 				current_state = AIR
 		AIR:
 			velocity.y += GRAVITY * delta
 			animation_player.play("Jump" if velocity.y < 0.0 else "Falling")
-			if ground_detector.is_colliding(): current_state = RUN
+			sprite.scale.x = sign(velocity.x)
+			if ground_detector.is_colliding() and velocity.y > 0.0:
+				current_state = RUN
 
 
 func _physics_process(_delta: float):
