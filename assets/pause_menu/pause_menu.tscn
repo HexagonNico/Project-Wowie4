@@ -81,5 +81,6 @@ text = "Quit"
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="pressed" from="Background/Menu/MenuOptions/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Background/Menu/MenuOptions/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Background/Menu/MenuOptions/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_tween_all_completed"]

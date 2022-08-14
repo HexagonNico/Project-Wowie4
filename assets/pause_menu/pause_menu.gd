@@ -1,6 +1,9 @@
 extends Control
 
 
+signal skip_button_pressed
+
+
 export(Vector2) var start_position = Vector2(0, -20)
 export(Vector2) var end_position = Vector2.ZERO
 export(float) var fade_in_duration = 0.3
@@ -46,6 +49,11 @@ func _on_resume_button_pressed():
 	if not tween.is_active():
 		get_tree().paused = false
 		close()
+
+
+func _on_skip_button_pressed():
+	get_tree().paused = false
+	emit_signal("skip_button_pressed")
 
 
 func _on_quit_button_pressed():
