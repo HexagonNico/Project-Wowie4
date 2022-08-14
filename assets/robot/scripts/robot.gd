@@ -17,6 +17,7 @@ export var jump_strength = 200.0
 var current_state = IDLE
 var velocity = Vector2.ZERO
 var can_jump = true
+var can_shoot = false
 
 onready var animation_player = $AnimationPlayer
 onready var sprite = $RobotSprite
@@ -38,6 +39,11 @@ func _process(delta: float):
 				current_state = AIR
 			elif not edge_detector[0].is_colliding() and not edge_detector[1].is_colliding():
 				current_state = AIR
+			if can_shoot:
+				current_state = SHOOTING
+				var bullet = gun.shoot(sprite.scale.x)
+				if bullet != null:
+					get_parent().call_deferred("add_child", bullet)
 		AIR:
 			velocity.y += GRAVITY * delta
 			animation_player.play("Jump" if velocity.y < 0.0 else "Falling")
@@ -50,13 +56,6 @@ func _process(delta: float):
 			if gun.cooldown.is_stopped():
 				current_state = RUN
 				velocity.x = speed * sprite.scale.x
-
-
-func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_1:
-			current_state = SHOOTING
-			gun.shoot(sprite.scale.x)
 
 
 func _physics_process(_delta: float):
@@ -88,3 +87,11 @@ func kick():
 
 func set_jump(value: bool):
 	can_jump = value
+
+
+func _on_enemy_detector_body_entered(_body: Node2D):
+	can_shoot = true
+
+
+func _on_enemy_detector_body_exited(_body: Node2D):
+	can_shoot = false
