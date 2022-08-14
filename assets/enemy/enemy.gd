@@ -1,7 +1,11 @@
 extends KinematicBody2D
 
 
+signal player_destroyed
+
+
 export var speed: float = 50.0
+export var destroy_particles: PackedScene
 
 var velocity = Vector2.ZERO
 
@@ -28,3 +32,13 @@ func _physics_process(_delta: float):
 	sprite.scale.x = 1 if velocity.x < 0.0 else -1
 	
 	animation_player.play("Walk")
+
+
+func _on_destroy_area_body_entered(body: Node2D):
+	if body is RigidBody2D:
+		var particles: Particles2D = destroy_particles.instance()
+		particles.emitting = true
+		get_parent().add_child(particles)
+		particles.position = body.position
+		body.queue_free()
+		emit_signal("player_destroyed")

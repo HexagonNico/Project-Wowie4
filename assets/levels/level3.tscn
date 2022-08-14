@@ -52,3 +52,5 @@ limit_bottom = 352
 
 [node name="EnemyRobot" parent="." index="9" instance=ExtResource( 3 )]
 position = Vector2( 336, 286 )
+
+[connection signal="player_destroyed" from="EnemyRobot" to="AnimationPlayer" method="play" binds= [ "ResetLevel" ]]

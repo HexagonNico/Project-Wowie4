@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/enemy/enemy.png" type="Texture" id=1]
 [ext_resource path="res://assets/enemy/enemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/enemy/particles.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.0
@@ -84,6 +85,18 @@ tracks/5/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("DestroyParticles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -165,6 +178,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 2 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("DestroyParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Walk"
@@ -187,6 +212,7 @@ tracks/0/keys = {
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
+destroy_particles = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -214,3 +240,15 @@ anims/Destroy = SubResource( 5 )
 anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 anims/Walk = SubResource( 4 )
+
+[node name="DestroyParticles" parent="." instance=ExtResource( 3 )]
+
+[node name="DestroyPlayerArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape2D" parent="DestroyPlayerArea"]
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="DestroyPlayerArea" to="." method="_on_destroy_area_body_entered"]
