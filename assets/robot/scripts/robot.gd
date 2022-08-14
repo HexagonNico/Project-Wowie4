@@ -4,7 +4,8 @@ extends KinematicBody2D
 enum {
 	IDLE,
 	RUN,
-	AIR
+	AIR,
+	SHOOTING
 }
 
 
@@ -21,6 +22,7 @@ onready var animation_player = $AnimationPlayer
 onready var sprite = $RobotSprite
 onready var edge_detector = [$EdgeDetectorLeft, $EdgeDetectorRight]
 onready var ground_detector = $GroundDetector
+onready var gun = $RobotSprite/Gun
 
 
 func _process(delta: float):
@@ -42,6 +44,19 @@ func _process(delta: float):
 			sprite.scale.x = sign(velocity.x)
 			if ground_detector.is_colliding() and velocity.y > 0.0:
 				current_state = RUN
+		SHOOTING:
+			velocity = Vector2.ZERO
+			animation_player.play("Shoot")
+			if gun.cooldown.is_stopped():
+				current_state = RUN
+				velocity.x = speed * sprite.scale.x
+
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.scancode == KEY_1:
+			current_state = SHOOTING
+			gun.shoot(sprite.scale.x)
 
 
 func _physics_process(_delta: float):
