@@ -13,7 +13,10 @@ func _process(_delta: float):
 	var robot_valid = is_instance_valid(robot)
 	var bubble_wrap_ball_valid = is_instance_valid(bubble_wrap_ball)
 	if robot_valid and bubble_wrap_ball_valid:
-		camera.global_position = (robot.global_position + bubble_wrap_ball.global_position) / 2
+		if robot.global_position.distance_squared_to(bubble_wrap_ball.global_position) > 200 * 200:
+			camera.global_position = robot.global_position
+		else:
+			camera.global_position = (robot.global_position + bubble_wrap_ball.global_position) / 2
 	elif robot_valid:
 		camera.global_position = robot.global_position
 	elif bubble_wrap_ball_valid:
