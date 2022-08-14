@@ -176,3 +176,4 @@ text = " Begin "
 [connection signal="toggled" from="PlayerUI/ActionButtons/JumpButton" to="." method="set_jump"]
 [connection signal="pressed" from="PlayerUI/ActionButtons/KickButton" to="." method="kick"]
 [connection signal="pressed" from="PlayerUI/ActionButtons/BeginButton" to="." method="begin"]
+[connection signal="pressed" from="PlayerUI/ActionButtons/BeginButton" to="PlayerUI/ActionButtons/BeginButton" method="set_text" binds= [ " Restart " ]]

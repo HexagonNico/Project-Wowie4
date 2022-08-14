@@ -55,6 +55,9 @@ func begin():
 	if current_state == IDLE:
 		current_state = RUN
 		velocity.x = speed
+	else:
+		# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()
 
 
 func kick():
