@@ -244,7 +244,7 @@ anims/Walk = SubResource( 4 )
 [node name="DestroyParticles" parent="." instance=ExtResource( 3 )]
 
 [node name="DestroyPlayerArea" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape2D" parent="DestroyPlayerArea"]

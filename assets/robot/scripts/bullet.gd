@@ -1,3 +1,4 @@
+class_name Bullet
 extends RigidBody2D
 
 
@@ -9,5 +10,5 @@ func _ready():
 
 
 func _on_body_entered(body: Node2D):
-	if body is KinematicBody2D:
-		body.animation_player.play("Destroy")
+	if body is Enemy:
+		body.destroy()
