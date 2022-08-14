@@ -25,6 +25,8 @@ onready var edge_detector = [$EdgeDetectorLeft, $EdgeDetectorRight]
 onready var ground_detector = $GroundDetector
 onready var gun = $RobotSprite/Gun
 
+onready var jump_sound = $JumpSound
+
 
 func _process(delta: float):
 	match current_state:
@@ -35,6 +37,7 @@ func _process(delta: float):
 			animation_player.play("Run")
 			sprite.scale.x = sign(velocity.x)
 			if can_jump and not edge_detector[1 if velocity.x > 0.0 else 0].is_colliding():
+				jump_sound.play()
 				velocity.y = -jump_strength
 				current_state = AIR
 			elif not edge_detector[0].is_colliding() and not edge_detector[1].is_colliding():
