@@ -1,14 +1,19 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/title_screen/sounds/wowie.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/title_screen/scripts/main_menu.gd" type="Script" id=3]
-[ext_resource path="res://assets/levels/level0.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/title_screen/scripts/select_level_menu.gd" type="Script" id=4]
 [ext_resource path="res://assets/background/parallax_background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/title_screen/scripts/camera.gd" type="Script" id=6]
 [ext_resource path="res://assets/title_screen/textures/title.png" type="Texture" id=7]
 [ext_resource path="res://assets/title_screen/textures/wowie_jam.png" type="Texture" id=8]
 [ext_resource path="res://assets/wall_of_text/wall_of_text.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/levels/level0.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/levels/level1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/levels/level3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/levels/level2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/levels/level4.tscn" type="PackedScene" id=14]
 
 [node name="TitleScreen" type="Node"]
 
@@ -19,7 +24,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
-level_1_scene = ExtResource( 4 )
 wall_of_text = ExtResource( 9 )
 
 [node name="MainMenu" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
@@ -129,6 +133,62 @@ margin_bottom = 434.0
 size_flags_horizontal = 4
 text = " Back "
 
+[node name="SelectLevelMenu" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+levels = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ) ]
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/SelectLevelMenu"]
+margin_left = 365.0
+margin_top = 172.0
+margin_right = 435.0
+margin_bottom = 308.0
+alignment = 1
+
+[node name="Level0" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_right = 70.0
+margin_bottom = 20.0
+text = " Level 0 "
+
+[node name="Level1" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_right = 70.0
+margin_bottom = 20.0
+text = " Level 1 "
+
+[node name="Level2" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_top = 24.0
+margin_right = 70.0
+margin_bottom = 44.0
+text = " Level 2 "
+
+[node name="Level3" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_top = 48.0
+margin_right = 70.0
+margin_bottom = 68.0
+text = " Level 3 "
+
+[node name="Level4" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_top = 72.0
+margin_right = 70.0
+margin_bottom = 92.0
+text = " Level 4 "
+
+[node name="Spacer" type="MarginContainer" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_top = 96.0
+margin_right = 70.0
+margin_bottom = 112.0
+custom_constants/margin_top = 8
+custom_constants/margin_bottom = 8
+
+[node name="BackButton" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_top = 116.0
+margin_right = 70.0
+margin_bottom = 136.0
+text = "Back"
+
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -143,3 +203,10 @@ script = ExtResource( 6 )
 [connection signal="pressed" from="CanvasLayer/MainMenu/MainMenu/MenuButtons/QuitButton" to="CanvasLayer/MainMenu" method="quit"]
 [connection signal="pressed" from="CanvasLayer/CreditsMenu/Titles/Button" to="CanvasLayer/MainMenu" method="set_visible" binds= [ true ]]
 [connection signal="pressed" from="CanvasLayer/CreditsMenu/Titles/Button" to="CanvasLayer/CreditsMenu" method="set_visible" binds= [ false ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level0" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 0 ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level1" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 1 ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level2" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 2 ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level3" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 3 ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level4" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 4 ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/BackButton" to="CanvasLayer/MainMenu" method="show"]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/BackButton" to="CanvasLayer/SelectLevelMenu" method="hide"]

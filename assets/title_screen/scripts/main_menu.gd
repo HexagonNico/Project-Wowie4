@@ -1,15 +1,14 @@
 extends CenterContainer
 
 
-export var level_1_scene: PackedScene
 export var wall_of_text: PackedScene
 
 
 func play():
 	var file = File.new()
 	if file.file_exists("user://wowie"):
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene_to(level_1_scene)
+		hide()
+		$"../SelectLevelMenu".show()
 	else:
 		file.open("user://wowie", File.WRITE)
 		file.store_line("WOWIEEEEE!")
