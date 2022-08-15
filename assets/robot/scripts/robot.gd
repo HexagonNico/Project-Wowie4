@@ -85,7 +85,7 @@ func kick():
 	if kick_ray.is_colliding():
 		var collider = kick_ray.get_collider()
 		if collider is RigidBody2D:
-			collider.linear_velocity = Vector2(150.0, -200.0) * sprite.scale
+			collider.linear_velocity = Vector2(150.0, -150.0) * sprite.scale
 
 
 func set_jump(value: bool):
