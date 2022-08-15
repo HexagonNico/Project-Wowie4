@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/title_screen/sounds/wowie.wav" type="AudioStream" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/levels/level3.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/levels/level2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/levels/level4.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/music/ovus_space.mp3" type="AudioStream" id=15]
 
 [node name="TitleScreen" type="Node"]
 
@@ -85,9 +86,9 @@ theme = ExtResource( 1 )
 
 [node name="Titles" type="VBoxContainer" parent="CanvasLayer/CreditsMenu"]
 margin_left = 124.0
-margin_top = 23.0
+margin_top = 11.0
 margin_right = 676.0
-margin_bottom = 457.0
+margin_bottom = 468.0
 custom_constants/separation = 32
 
 [node name="GameTitle" type="TextureRect" parent="CanvasLayer/CreditsMenu/Titles"]
@@ -196,6 +197,11 @@ zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 6 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -12.0
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MainMenu/MenuButtons/PlayButton" to="CanvasLayer/MainMenu" method="play"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MainMenu/MenuButtons/CreditsButton" to="CanvasLayer/MainMenu" method="set_visible" binds= [ false ]]
