@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/ui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/title_screen/sounds/wowie.wav" type="AudioStream" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/levels/level2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/levels/level4.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/music/ovus_space.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/levels/level5.tscn" type="PackedScene" id=16]
 
 [node name="TitleScreen" type="Node"]
 
@@ -141,7 +142,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
-levels = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ) ]
+levels = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 16 ) ]
 
 [node name="Buttons" type="VBoxContainer" parent="CanvasLayer/SelectLevelMenu"]
 margin_left = 365.0
@@ -177,6 +178,12 @@ margin_top = 72.0
 margin_right = 70.0
 margin_bottom = 92.0
 text = " Level 4 "
+
+[node name="Level5" type="Button" parent="CanvasLayer/SelectLevelMenu/Buttons"]
+margin_top = 72.0
+margin_right = 70.0
+margin_bottom = 92.0
+text = " Level 5 "
 
 [node name="Spacer" type="MarginContainer" parent="CanvasLayer/SelectLevelMenu/Buttons"]
 margin_top = 96.0
@@ -215,5 +222,6 @@ autoplay = true
 [connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level2" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 2 ]]
 [connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level3" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 3 ]]
 [connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level4" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 4 ]]
+[connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/Level5" to="CanvasLayer/SelectLevelMenu" method="select_level" binds= [ 5 ]]
 [connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/BackButton" to="CanvasLayer/MainMenu" method="show"]
 [connection signal="pressed" from="CanvasLayer/SelectLevelMenu/Buttons/BackButton" to="CanvasLayer/SelectLevelMenu" method="hide"]

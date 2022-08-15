@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/enemy/enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/music/99_percent.mp3" type="AudioStream" id=4]
 [ext_resource path="res://assets/background/parallax_background_2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/wall_of_text/wall_of_text_2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/levels/level5.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 464, 8 )
