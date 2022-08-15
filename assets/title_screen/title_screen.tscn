@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/title_screen/sounds/wowie.wav" type="AudioStream" id=2]
 [ext_resource path="res://assets/title_screen/scripts/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/title_screen/scripts/select_level_menu.gd" type="Script" id=4]
-[ext_resource path="res://assets/background/parallax_background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/background/parallax_background_2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/title_screen/scripts/camera.gd" type="Script" id=6]
 [ext_resource path="res://assets/title_screen/textures/title.png" type="Texture" id=7]
 [ext_resource path="res://assets/title_screen/textures/wowie_jam.png" type="Texture" id=8]
@@ -121,7 +121,8 @@ margin_right = 483.0
 margin_bottom = 382.0
 size_flags_horizontal = 4
 text = "Art, sound effects and music
-from the Godot 2D platformer demo (Mit licensed)"
+from the Godot 2D platformer demo (Mit licensed)
+and the Wowie resource pack"
 align = 1
 valign = 1
 
@@ -189,12 +190,12 @@ margin_right = 70.0
 margin_bottom = 136.0
 text = "Back"
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
-
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 6 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MainMenu/MenuButtons/PlayButton" to="CanvasLayer/MainMenu" method="play"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MainMenu/MenuButtons/CreditsButton" to="CanvasLayer/MainMenu" method="set_visible" binds= [ false ]]

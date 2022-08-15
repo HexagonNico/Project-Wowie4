@@ -2,15 +2,13 @@
 
 [ext_resource path="res://assets/title_screen/scripts/camera.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui/theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/background/parallax_background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/background/parallax_background_2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/wall_of_text/wall_of_text.gd" type="Script" id=4]
 [ext_resource path="res://assets/levels/level1.tscn" type="PackedScene" id=5]
 
 [node name="WallOfText" type="Node"]
 script = ExtResource( 4 )
 level1 = ExtResource( 5 )
-
-[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -55,5 +53,7 @@ text = " OK "
 current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Button" to="." method="go_to_level_1"]
