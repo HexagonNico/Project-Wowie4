@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/ui/theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/background/parallax_background_2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/wall_of_text/wall_of_text.gd" type="Script" id=4]
-[ext_resource path="res://assets/levels/level1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/levels/level0.tscn" type="PackedScene" id=5]
 
 [node name="WallOfText" type="Node"]
 script = ExtResource( 4 )
