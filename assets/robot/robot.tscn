@@ -191,12 +191,12 @@ collision_mask = 24
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 
 [node name="ActionButtons" type="VBoxContainer" parent="PlayerUI"]
-anchor_left = 0.95
-anchor_top = 0.95
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 0
-grow_vertical = 0
+margin_left = 384.0
+margin_top = 384.0
+margin_right = 452.0
+margin_bottom = 452.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource( 3 )
 
 [node name="JumpButton" type="CheckBox" parent="PlayerUI/ActionButtons"]
