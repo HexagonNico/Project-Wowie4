@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/demo_platformer.ogg-ea06e03bfae9c78ef1763ea5470194a9.oggstr"
+
+[deps]
+
+source_file="res://assets/music/demo_platformer.ogg"
+dest_files=[ "res://.import/demo_platformer.ogg-ea06e03bfae9c78ef1763ea5470194a9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

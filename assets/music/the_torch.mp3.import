@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/the_torch.mp3-17ed29463e3d22cf85cf22c97386b63e.mp3str"
+
+[deps]
+
+source_file="res://assets/music/the_torch.mp3"
+dest_files=[ "res://.import/the_torch.mp3-17ed29463e3d22cf85cf22c97386b63e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

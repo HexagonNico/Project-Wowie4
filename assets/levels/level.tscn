@@ -284,6 +284,11 @@ smoothing_speed = 8.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+volume_db = -12.0
+autoplay = true
+
 [connection signal="body_entered" from="ResetLevel" to="." method="_on_reset_level_body_entered"]
 [connection signal="teleported" from="Teleporter" to="." method="go_to_next_level"]
 [connection signal="skip_button_pressed" from="CanvasLayer/PauseMenu" to="." method="go_to_next_level"]

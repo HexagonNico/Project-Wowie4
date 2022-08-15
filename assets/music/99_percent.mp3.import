@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/99_percent.mp3-f4782d95635c8bd4980cea7e355ec135.mp3str"
+
+[deps]
+
+source_file="res://assets/music/99_percent.mp3"
+dest_files=[ "res://.import/99_percent.mp3-f4782d95635c8bd4980cea7e355ec135.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

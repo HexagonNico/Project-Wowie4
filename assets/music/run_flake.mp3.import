@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/run_flake.mp3-f270b91ab445e35ca0eb3a01886e05b3.mp3str"
+
+[deps]
+
+source_file="res://assets/music/run_flake.mp3"
+dest_files=[ "res://.import/run_flake.mp3-f270b91ab445e35ca0eb3a01886e05b3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

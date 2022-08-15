@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/levels/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tileset/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/levels/level3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/music/the_torch.mp3" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 400, 8 )
@@ -50,3 +51,6 @@ position = Vector2( 640, 256 )
 position = Vector2( 80, 216 )
 limit_right = 736
 limit_bottom = 352
+
+[node name="BackgroundMusic" parent="." index="9"]
+stream = ExtResource( 4 )
